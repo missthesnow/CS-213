@@ -5,50 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="assign03style.css" type="text/css" rel="stylesheet"> 
+
 </head>
 <style>
-  *{
-  box-sizing: border-box;
-   }
-  .column 
-  {
-    float: left;
-    width: 50%;
-    padding: 10px;
-  }
-  a
-  {
-    color: #FFFFFF;
-  }
-  a:hover
-  {
-      color: #7289DA;
-  }
-  ul a 
-  {
-    color: #FFFFFF;
-  }
-  ul a:hover
-  {
-    color: #7289DA;
-  }
-  header
-  {
-    text-align: center;
-    font-family:'Times New Roman', Times, serif;
-    color: #7289DA;
-  }
-  body 
-  {
-    background-color: #2C2F33;
-  }
-  h1, h3, h4, h5 
+  h1, h4, h5 
   {
     text-align: center;
     font-family:'Times New Roman', Times, serif;
     color: #7289DA; 
   }
-  h2
+  h2, h3
   {
       font-family: 'Times New Roman', Times, serif;
       color: #7289DA;
@@ -86,6 +53,20 @@
     text-align: center;
     font-family:'Times New Roman', Times, serif;
     color: #7289DA;
+  }
+  input[type=text], input[type=email], input[type=textarea]:focus 
+  {
+  background-color: #7289DA;
+  }
+  input[type=button], input[type=submit], input[type=reset] 
+  {
+  background-color: #7289DA;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
   }
 </style>
 <header>
@@ -227,10 +208,57 @@
       <img src="damick03.png" alt="Damick 03" width="30%" style="vertical-align:center"; margin:50px 50px>
     </div>
 </div>
+<div>
+    <h1 style="text-align: left;">Contact Form</h1>
+    <form style="color: #FFFFFF;">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+
+        <p>Select Reason for Contact (Check any that apply):</p>
+        <input type="checkbox" id="reason1" name="reason1" value="Feedback">
+        <label for="reason1"> General Feedback</label><br>
+        <input type="checkbox" id="reason2" name="reason2" value="Complaint">
+        <label for="reason2"> Website Complaint</label><br>
+        <input type="checkbox" id="reason3" name="reason3" value="Request">
+        <label for="reason3"> Information Request</label><br><br>
+
+        <label for="info">If "Information Request," please specify the information you want:</label><br>
+        <select id="info" name="info">
+        <option value="select">--Please Select--</option>
+        <option value="not_applicable">Not Applicable</option>
+        <option value="artist">Commisioned Artist(s) Contact</option>
+        <option value="author">Author Contact</option>
+        <option value="editor">Editor Contact</option>
+        <option value="arc">ARC Purchase Info</option>
+        <option value="other">Other</option>
+        </select><br><br>
+
+        <label for="message">Additional Comments:</label><br>
+        <textarea name="message" rows="10" cols="30"></textarea>
+
+        <p>Would you like an emailed response to your form?</p>
+        <input type="radio" id="yes" name="response" value="yes">
+        <label for="male">Yes</label><br>
+        <input type="radio" id="no" name="response" value="no">
+        <label for="female">No</label><br>
+        <input type="radio" id="other" name="response" value="other">
+        <label for="other">Prefer other contact method</label><br><br>
+
+        <label for="message">If "other," please provide contact method:</label><br>
+        <textarea name="message" rows="2" cols="30"></textarea>
+
+        <br><input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</div>
+<div>
   <p>
-  <br>
   <a href="#top">↑ Back to Top</a>
   </p>
+</div>
 </body>
 <footer>
     <p>Created by Whitney LeSueur - Fall 2020</p>
