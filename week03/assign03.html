@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <style>
+  *{
+  box-sizing: border-box;
+   }
+  .column 
+  {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+  a
+  {
+    color: #FFFFFF;
+  }
+  a:hover
+  {
+      color: #7289DA;
+  }
   ul a 
   {
     color: #FFFFFF;
@@ -33,7 +50,6 @@
   }
   h2
   {
-      text-align: left;
       font-family: 'Times New Roman', Times, serif;
       color: #7289DA;
   }
@@ -46,7 +62,7 @@
   {
     font-family: 'Verdana';
     font-size: 1em;
-    color: #FFB8FB;
+    color: #FFFFFF;
   }
   thead, tr, td, th, table
   {
@@ -56,6 +72,14 @@
   nav
   {
     text-align: left;
+  }
+  blockquote
+  {
+    font:Verdana; 
+    font-size:2em; 
+    color: #FFB8FB;
+    text-align:right; 
+    margin-right: 8px
   }
   footer
   {
@@ -71,11 +95,12 @@
     </nav>
 </header>
 <body>
+  <a name="top"></a>
   <hr>
   <p>Hi, I'm Whitney LeSueur. I'm a Software Engineering Major from Houston, Texas.</p>
   <br>
-  <section style="text-align:right; margin-right: 8px">
-    <blockquote style="font:Verdana; font-size:2em; color: #FFB8FB">
+  <section>
+    <blockquote>
       <i>"I was given something wonderful, something that changed me forever... A vision of the universe that 
           tells us, undeniably, how tiny, and insignificant and how ... rare, and precious we all are! A vision 
           that tells us that we belong to something that is greater than ourselves, that we are not — that none 
@@ -86,7 +111,7 @@
     </blockquote>
   </section>
   <div style="text-align:center">
-  <section style="text-align:center; color: #FFFFFF">
+  <section>
     <table>
       <thead>
         <tr>
@@ -132,16 +157,23 @@
   </section>
   </div>
   <br>
-  <div>
-      <h2>Excerpt from <b>Five Fifths of the World</b></h2>
-      <p style="padding-right: 50em; text-align: justify;"">At that moment, I felt my physical senses leave me. Not in the same way that the 
-          fairy had taken them, instantly and cruelly. No, this was <i>fading</i> and <i>dizzying</i>, like 
-          I had the chance to reach out and pull them back if I tried. He was not mine to love; 
-          I would lose my senses forever.</p>
-      <p style="padding-right: 50em; text-align: justify;">The smell of the grass and rain fades and with it, the emeralds and cobalts and other 
-          nuances of color I had perhaps begun to take for granted. The sound of the pounding rain 
-          resigns to my imagination and so does the feel of Damick's hand. I see his mouth move and 
-          expect to hear nothing, but I am granted his last words to me.</p>
+  <div class="row">
+      <div class="column" style="background-color: #7289DA;">
+        <h2 style="text-align: right; color: #2C2F33">Proposed Book Cover</h2>
+        <img src="Five Fifths of the World.png" alt="Book Cover Preliminary" width="20%" style="float:right">
+      </div>
+      <div class="column">
+        <h2 style="text-align: left;">Excerpt from <b>Five Fifths of the World</b></h2>
+        <p style="text-align: justify;">At that moment, I felt my physical senses leave me. 
+            Not in the same way that the fairy had taken them, instantly and cruelly. No, this was <i>fading</i> 
+            and <i>dizzying</i>, like I had the chance to reach out and pull them back if I tried. He was not mine 
+            to love; I would lose my senses forever.</p>
+       <p style="text-align: justify;">The smell of the grass and rain fades and with it, 
+          the emeralds and cobalts and other nuances of color I had perhaps begun to take for granted. The sound 
+          of the pounding rain resigns to my imagination and so does the feel of Damick's hand. I see his mouth 
+          move and expect to hear nothing, but I am granted his last words to me.</p>
+        <p>← Click for Full Size Image</p>
+      </div>
   </div>
   <br>
   <div style="text-align:center;">
@@ -150,6 +182,7 @@
     </section>
   </div>
   <br>
+  <a href="#top">↑ Back to Top</a>
 </body>
 <footer>
     <p>Created by Whitney LeSueur Fall 2020</p>
