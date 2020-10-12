@@ -1,0 +1,20 @@
+a {
+    color: #FFFFFF;}
+a:hover {
+      color: #7289DA;}
+ul a {
+    color: #FFFFFF;}
+ul a:hover {
+    color: #7289DA;}
+header {
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    color: #7289DA;}
+body {
+    background-color: #2C2F33;}
+*{
+    box-sizing: border-box;}
+.column {
+      float: left;
+      width: 50%;
+      padding: 10px;}
