@@ -42,3 +42,6 @@ body {
     background-color: #2C2F33;}
 .flex-container > div {
     background-color: #2C2F33;}
+img {
+    max-width: 50%;
+        height: auto;}
