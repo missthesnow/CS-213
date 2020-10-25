@@ -1,0 +1,76 @@
+.topnav {
+    overflow: hidden;
+    background-color: #2C2F33;}
+.topnav a {
+    float: left;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;}
+.topnav a:hover {
+    background-color: #FFFFFF;
+    color: black;}
+@media screen and (max-width: 600px) {
+    .topnav a {
+      float: none;
+      width: 100%;}
+  }
+a {
+    color: #ff90b5;}
+a:hover {
+      color: #FFFFFF;}
+ul a {
+    color: #ff90b5;}
+ul a:hover {
+    color: #FFFFFF;}
+header {
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    color: #ff90b5;}
+body {
+    background-color: #2C2F33;}
+*{
+    box-sizing: border-box;}
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;}
+.flex-container {
+    margin-left: 160px;
+    padding: 0px 10px;
+    flex-direction: column;
+    display: flex;
+    background-color: #2C2F33;}
+.flex-container > div {
+    background-color: #2C2F33;}
+img {
+    max-width: 50%;
+        height: auto;}
+
+.sidenav {
+    height: auto;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 1;
+    left: 1;
+    background-color: #202020;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 50px;}
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;}
+
+  .sidenav a:hover {
+    color: #f1f1f1;}
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 12px;}
+    }
