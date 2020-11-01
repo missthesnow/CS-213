@@ -1,0 +1,118 @@
+.topnav {
+    overflow: hidden;
+    background-color: #2C2F33;}
+.topnav a {
+    float: left;
+    display: block;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;}
+.topnav a:hover {
+    background-color: #FFFFFF;
+    color: black;}
+@media screen and (max-width: 600px) {
+    .topnav a {
+      float: none;
+      width: 100%;}
+  }
+a {
+    color: #FFFFFF;}
+a:hover {
+      color: #7289DA;}
+ul a {
+    color: #FFFFFF;}
+ul a:hover {
+    color: #7289DA;}
+header {
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    color: #FFFFFF;}
+body {
+    background-color: #2C2F33;}
+    h1, h4, h5 {
+        text-align: center;
+        font-family:'Times New Roman', Times, serif;
+        color: #7289DA; }
+      h2, h3 {
+          font-family: 'Times New Roman', Times, serif;
+          color: #FFFFFF;}
+      h3 {
+              text-align: center;
+              font-family: 'Times New Roman', Times, serif;
+              color:#7289DA
+          }
+      p {
+        font-family: 'Times New Roman', Times, serif;
+        color: #FFFFFF;}
+      nav {
+        text-align: left;}
+    
+      footer {
+        position: relative;
+        text-align: center;
+        font-family:'Times New Roman', Times, serif;
+        color: #7289DA;}
+label {
+    color: #FFFFFF;}
+*{
+    box-sizing: border-box;}
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;}
+.flex-container {
+    margin-left: 160px;
+    padding: 0px 10px;
+    flex-direction: column;
+    display: flex;
+    background-color: #2C2F33;}
+.flex-container > div {
+    background-color: #2C2F33;}
+img {
+    max-width: 50%;
+    height: auto;}
+header {
+    background-color: #7289DA;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 40px;}
+#payment {
+    color: #97ff9c;
+    font-size: 30px;
+    text-align: left;}
+form {
+    padding: 30px 40px;}
+form label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;}
+form label:nth-of-type(4) {
+    color: #97FF9C;
+    font-weight: bold;}
+form input {
+    margin-bottom: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #5e5b5b;
+    color: #FFFFFF;}
+form small {
+    color: #dd6363;
+    font-family: monospace;
+    font-weight: bold;}
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #7289DA;
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+    height: 50px;
+    letter-spacing: -1px;
+    line-height: 50px;
+    text-align: center;
+    width: 180px;
+    margin-left: 50px;
+    margin-right: 50px;}
+        
+button:active {
+    background-color: #474EDD;
+    top: 4px;}       
