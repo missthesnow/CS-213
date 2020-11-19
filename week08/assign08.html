@@ -1,1 +1,105 @@
-This will be assignment #8
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JavaScript Form Validation</title>
+      <link rel="stylesheet" href="./assign08style.css">
+   </head>
+   <body>
+    <header>
+        <h2>JavaScript Form Validation</h2>
+        <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+    </header>
+      <div>
+         <form id="myForm">
+            <label for="firstname">First Name</label><br>
+            <input type="text" id="firstname" name="first_name" placeholder="Jane"><br>
+
+            <label for="lastname">Last Name</label><br>
+            <input type="text" id="lastname" name="last_name" placeholder="Doe"><br>
+
+            <label for="address">Address</label><br>
+            <input type="text" id="address" name="address" placeholder="555 South Brook St."><br>
+
+            <label for="phonenumber">Phone Number</label><br>
+            <input type="text" id="phonenumber" name="phone" placeholder="208-555-5555" oninput="validateNumber()">
+            <p id="error01" style="display: none; color: #ff4848;">Must be of the format: 208-555-5555</p>
+
+            <h3>Please select which items you would like to purchase:</h3>
+            <input type="checkbox" id="item_0" name="item_0" value="item_0">
+            <label for="item_0"> Measuring Cup Set $2.99</label><br>
+
+            <input type="checkbox" id="item_1" name="item_1" value="item_1">
+            <label for="item_1"> Measuring Spoon Set $1.99</label><br>
+
+            <input type="checkbox" id="item_2" name="item_2" value="item_2">
+            <label for="item_2"> Mixing Bowl Set $5.99</label><br>
+
+            <input type="checkbox" id="item_3" name="item_3" value="item_3">
+            <label for="item_3"> Non-Stick Baking Sheet $7.99</label><br><br>
+
+            <label for="total">Total:</label>
+            <p id="total"></p>
+
+            <h3>Payment Method Details:</h3>
+            <p>Credit Card Type:</p>
+            <input type="radio" id="visa" name="card" value="freeForm">
+            <label for="visa">Visa</label><br>
+            <input type="radio" id="mastercard" name="card" value="stadard">
+            <label for="mastercard">Mastercard</label><br>
+            <input type="radio" id="am_ex" name="card" value="stadard">
+            <label for="am_ex">American Express</label><br><br>
+            <label for="credit_card">Credit Card #</label>
+            <input type="text" id="credit_card" name="credit_card" placeholder="1111 1111 1111 1111" oninput="validateCard()">
+            <p id="error02" style="display: none; color: #ff4848;">Must be of the format: 1111 1111 1111 1111</p><br>
+            <label for="exp_date">Expiration Date:</label>
+            <input type="text" id="exp_date" name="exp_date" placeholder="01/2020" oninput="validateDate()">
+            <p id="error03" style="display: none; color: #ff4848;">Must be of the format: 01/2020</p><br>
+
+            <input type="submit" value="Submit" onclick="validate()">
+            <input type="reset" value="Reset" onclick="resetForm()">
+         </form>
+      </div>
+      <footer style="clear: right; text-align: center;">
+        <p>Created by Whitney LeSueur - Fall 2020</p>
+      </footer>
+
+      <script>
+         function resetForm() {
+            document.getElementById("myForm").reset();
+            document.getElementById("firstname").focus();
+            document.getElementById("error01").style.display = "none";
+            document.getElementById("error02").style.display = "none";
+            document.getElementById("error03").style.display = "none";
+         }
+         function check() {
+
+         }
+         function validateNumber() {
+            var number = /\d\d\d-\d\d\d-\d\d\d\d/;
+            var result = document.getElementById("phnumber").value;
+            if (!number.test(result))
+               document.getElementById("error01").style.display = "inline";
+            else
+               document.getElementById("error01").style.display = "none";
+         }
+         function validateCard() {
+            var card = /\d\d\d\d\s\d\d\d\d\s\d\d\d\d\s\d\d\d\d/;
+            var result = document.getElementById("credit_card").value;
+            if (!card.test(result))
+               document.getElementById("error02").style.display = "inline";
+            else
+               document.getElementById("error02").style.display = "none";
+         }
+         function validateDate() {
+            var date = /\d\d\/\d\d\d\d/;
+            var result = document.getElementById("exp_date").value;
+            if (!date.test(result))
+               document.getElementById("error03").style.display = "inline";
+            else
+               document.getElementById("error03").style.display = "none";
+         }
+
+      </script>
+</body></html>
