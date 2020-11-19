@@ -1,1 +1,74 @@
-This will be assignment #9
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Demonstration</title>
+    <link rel="stylesheet" href="./assign09style.css">
+  </head>
+  <body>
+    <header>
+        <h2>Ajax Demonstration</h2>
+        <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+    </header>
+    <h3>Select a Country from the Drop-Down List to View its Ten Most Populous Cities:</h3>
+        <select id="country" name="country" onchange="loadXMLDoc()">
+            <option value="noneSelected">-- Select --</option>
+            <option value="usa.txt">USA</option>
+            <option value="canada.txt">Canada</option>
+            <option value="mexico.txt">Mexico</option>
+            <option value="russia.txt">Russia</option>
+        </select><br>
+    <br><table id="display"></table><br>
+
+    <h3>Type in a Filename (json.txt or json1.txt) to View its Contents:</h3>
+    <input type="text" id="fileName" value="json.txt"></input>
+    <button id="json" onclick="loadJSONDoc()">Read File</button><br>
+    <br><table id="jsonTable"></table>
+
+    <script>
+    function loadXMLDoc() {
+      var xmlhttp = new XMLHttpRequest();
+      textFile = document.getElementById("country").value;
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          formatText(this.responseText);}
+      };
+      xmlhttp.open("GET", textFile, true);
+      xmlhttp.send();}
+
+    function loadJSONDoc() {
+      var xmlhttp = new XMLHttpRequest();
+      var file = document.getElementById("fileName").value;
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var myObj = JSON.parse(this.responseText);
+          formatJson(myObj);}
+      };
+      xmlhttp.open("GET", file, true);
+      xmlhttp.send();}
+
+    function formatText(xml) {
+      var i;
+      var table="<tr><th>City</th><th>City Population</th></tr>";
+      var rows = xml.split("\n");
+      for (i = 0; i < rows.length -1 ; i++) { 
+        var rowData = rows[i].split(/\s{2,}/);
+        table += "<tr><td>" + rowData[0] + "</td><td>" + rowData[1] + "</td></tr>";}
+      document.getElementById("display").innerHTML = table;}
+
+    function formatJson(xml) {
+      var i;
+      var table="<tr><th>Full Name</th><th>Address</th><th>Major</th><th>GPA</th></tr>";
+      var x = xml.students;
+      for (i = 0; i < x.length; i++) { 
+        table += "<tr><td>" + x[i].first + " " + x[i].last + "</td><td>" +
+        x[i].address.city + " " + x[i].address.state + " " + x[i].address.zip  + "</td><td>" +
+        x[i].major + "</td><td>" + x[i].gpa + "</td></tr>";}
+      document.getElementById("jsonTable").innerHTML = table;}
+    </script>
+
+  </body>
+</html>
