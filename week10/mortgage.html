@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mortgage Calculator</title>
+      <link rel="stylesheet" href="./assign10style.css">
+      <style>
+
+      </style>
+   </head>
+   <body>
+      <header>
+         <h2>Mortgage Calculator</h2>
+         <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+            <ul><a href="./assign10.html">← Back To Assignment 10</a><br></ul>
+        </nav>
+         
+         
+      </header>
+      <div id="flex_first" class="blue_rounded">
+         <form id="mortgage" action="mortgage.php" method="GET" class="center_list white_rounded">
+            <label>Loan Amount: $</label>
+            <input type="text" name="loan" id="loan" placeholder="Loan Amount" onblur="checkla()" class="gridItem"/>
+            <p class="gridItem" style="display: none;" id="laAlert">Loan amount must be a positive number</p>
+
+            <br><label>Annual Percentage Rate:</label>
+            <input type="text" name="apr" id="apr" placeholder="APR" onblur="checkAPR()" class="gridItem"/>
+            <p class="gridItem" style="display: none;" id="aprAlert">Value must be between 0 and 25.00%</p>
+            
+            <br><label>Loan Term (in years):</label>
+            <input type="text" name="term" id="term" placeholder="Loan Term" onblur="checklt()" class="gridItem"/>
+            <p class="gridItem" style="display: none;" id="ltAlert">Value must be between 0 and 40</p>
+
+            <br><input type="button" name="clear" id="clear" value="Reset" onclick="resetForm()" class="gridItem"/>
+            
+            <button type="submit" name="calculate" id="calculate" onclick="formCheck()" class="gridItem mort">Submit</button> 
+            <p class="boxed_answer" id="displayPayment"></p>
+         </form>
+      </div>
+
+      <script>
+         function formCheck() {
+            if (monthRate == "" || numPayments == "" || loan == "") {
+               display.innerHTML = "All fields must be completed.";
+               return;
+            }
+         }
+         function resetForm() {
+            document.getElementById("mortgage").reset();
+            document.getElementById("apr").focus();
+            document.getElementById("aprValidate").style.display = "none";
+            document.getElementById("termvalidate").style.display = "none";
+            document.getElementById("loanValidate").style.display = "none";
+            document.getElementById("displayPayment").style.display = "none";
+         }
+         function checkAPR() {
+            var apr = document.getElementById("apr");
+            if (apr.value < 0 || apr.value > 25.00 || apr.value == "" || isNaN(apr.value)) {
+               document.getElementById("aprValidate").style.display = "inline";
+            }
+            else {
+               document.getElementById("aprValidate").style.display = "none";
+            }
+         }
+         function checkTerm() {
+            var term = document.getElementById("term");
+            if (term.value < 1 || term.value > 40 || isNaN(term.value)) {
+               document.getElementById("termValidate").style.display = "inline";
+            }
+            else {
+               document.getElementById("termValidate").style.display = "none";
+            }
+         }
+         function checkLoan() {
+            var loan = document.getElementById("loan");
+            if (loan.value < 0 || loan.value == "" || isNaN(term.value)) {
+               document.getElementById("loanValidate").style.display = "inline";
+            }
+            else {
+               document.getElementById("loanValidate").style.display = "none";
+            }
+         }
+      </script>
+   </body>
+</html>

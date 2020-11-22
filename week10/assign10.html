@@ -1,1 +1,48 @@
-This will be assignment #10
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ajax and PHP Demo</title>
+      <link rel="stylesheet" href="./assign10style.css">
+   </head>
+   <body onload="makeRequest()">
+      <header>
+         <h2>Ajax and PHP Demo</h2>
+         <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+      </header>
+      <table id="display"></table>
+      <div>
+      <p><br><a href="./mortgage.html">Mortgage Calculator</a></p><br><br>
+      </div>
+      
+      <script>
+         function makeRequest() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               var myObj = JSON.parse(this.responseText);
+               formatJson(myObj);
+            }
+            };
+            xmlhttp.open("GET", "assign10.php", true);
+            xmlhttp.send();
+         }
+         function formatJson(myObj) {
+            var i;
+            var table="<tr><th>Filename</th><th>Type</th><th>CWD</th><th>Action</th></tr>";
+            for (i = 0; i < myObj.length; i++) { 
+               table += "<tr><td>" + myObj[i].fileName + "</td><td>" + myObj[i].fileType + "</td><td>" +
+               myObj[i].cwd + "</td><td>";
+               if (myObj[i].fileType == "file") {
+                  table += "<button onclick=\"window.location='" + myObj[i].fileName + "'\">Click to display<\/button>";
+               }
+               table += "</td></tr>";
+            }
+            document.getElementById("display").innerHTML = table;
+         }
+      </script>
+   </body>
+</html>
