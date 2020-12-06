@@ -50,9 +50,11 @@
             <label for="mastercard">Mastercard</label><br>
             <input type="radio" id="am_ex" name="card" value="standard">
             <label for="amex">American Express</label><br><br>
+
             <label for="credit_card">Credit Card #</label>
             <input type="text" id="credit_card" name="credit_card" placeholder="1111 1111 1111 1111" oninput="validateCard()">
             <p id="error02" style="display: none; color: #ff4848;">Must be of the format: 1111 1111 1111 1111</p><br>
+            
             <label for="exp_date">Expiration Date:</label>
             <input type="text" id="exp_date" name="exp_date" placeholder="01/2020" oninput="validateDate()">
             <p id="error03" style="display: none; color: #ff4848;">Must be of the format: 01/2020</p><br>
