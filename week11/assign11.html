@@ -1,1 +1,169 @@
-This will be assignment #11
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>PHP Form Processing</title>
+      <link rel="stylesheet" href="./assign11style.css">
+   </head>
+   <body>
+    <header>
+        <h2>PHP Form Processing</h2>
+        <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+    </header>
+      <div>
+         <form id="myForm" method="POST" action="assign11.php" onsubmit="return check()">
+            <label for="firstname">First Name</label><br>
+            <input type="text" id="firstname" name="first_name" placeholder="Jane"/><br>
+            
+            <label for="lastname">Last Name</label><br>
+            <input type="text" id="lastname" name="last_name" placeholder="Doe"/><br>
+            
+            <label for="address">Address</label><br>
+            <input type="text" id="address" name="address" placeholder="555 South Brook St."/><br>
+            
+            <label for="phnumber">Phone Number</label><br>
+            <input type="text" id="phnumber" name="phone" placeholder="208-555-5555" oninput="checkerror01()"/><br>
+            <p id="error01"  style="display: none; color: #ff4848;">Must be of the format: 208-555-5555</p>
+            
+            <h3>Please select which items you would like to purchase:</h3>
+            <input type="checkbox" id="item_0" name="items[]" value="1" onclick="myTotal()"/>
+            <label for="item_0"> Measuring Cup Set $2.99</label><br>
+
+            <input type="checkbox" id="item_1" name="items[]" value="2" onclick="myTotal()"/>
+            <label for="item_1"> Measuring Spoon Set $1.99</label><br>
+
+            <input type="checkbox" id="item_2" name="items[]" value="3" onclick="myTotal()"/>
+            <label for="item_2"> Mixing Bowl Set $5.99</label><br>
+
+            <input type="checkbox" id="item_3" name="items[]" value="4" onclick="myTotal()"/>
+            <label for="item_3"> Non-Stick Baking Sheet $7.99</label><br><br>
+            
+            <label for="total">Total:</label>
+            <input type="text" readonly id="total" name="total">
+
+            <h3>Payment Method Details:</h3>
+            <p>Credit Card Type:</p>
+            <input type="radio" id="visa" name="card" value="Visa"/>
+            <label for="visa">Visa</label><br>
+            <input type="radio" id="mastercard" name="card" value="Mastercard"/>
+            <label for="mastercard">Mastercard</label><br>
+            <input type="radio" id="am_ex" name="card" value="American Express"/>
+            <label for="am_ex">American Express</label><br><br>
+
+            <label for="credit_card">Credit Card #</label>
+            <input type="text" id="credit_card" name="credit_card" placeholder="1111 1111 1111 1111" oninput="checkerror02()"/>
+            <p id="error02" style="display: none; color: #ff4848">Must be of the format: 1111 1111 1111 1111<br></p><br>
+
+            <label for="exp_date">Expiration Date:</label>
+            <input type="text" id="exp_date" name="exp_date" placeholder="01/2020" oninput="checkerror03()"/>
+            <p id="error03" style="display: none; color: #ff4848;">Must be of the format: 01/2020</p><br>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset" onclick="resetForm()">
+            <p id="error" style="color: #ff4848;"></p>
+         </form>
+      </div>
+      <footer style="clear: right; text-align: center;">
+        <p>Created by Whitney LeSueur - Fall 2020</p>
+      </footer>
+
+      <script>
+         function resetForm() {
+            document.getElementById("myForm").reset();
+            document.getElementById("firstname").focus();
+            document.getElementById("error01").style.display = "none";
+            document.getElementById("error02").style.display = "none";
+            document.getElementById("error03").style.display = "none";
+         }
+         function check(){
+            document.getElementById("error").innerHTML = ""
+            var address = document.getElementById("address").value;
+            var lastname = document.getElementById("lastname").value;
+            var firstname = document.getElementById("firstname").value;
+            if (firstname == "") {
+               document.getElementById("error").innerHTML = "Must enter first name";
+               document.getElementById("firstname").focus();
+               return false;
+            } else if (lastname == "") {
+               document.getElementById("error").innerHTML = "Must enter last name";
+               document.getElementById("lastname").focus();
+               return false;
+            } else if (address == "") {
+               document.getElementById("error").innerHTML = "Must enter address";
+               document.getElementById("address").focus();
+               return false;
+            } else if (!checkerror01()) {
+               document.getElementById("error").innerHTML = "Must enter phone number";
+               document.getElementById("phnumber").focus();
+               return false;
+            } else if (!checkerror02()) {
+               document.getElementById("error").innerHTML = "Must enter card #";
+               document.getElementById("credit_card").focus();
+               return false;
+            } else if (!checkerror03()) {
+               document.getElementById("error").innerHTML = "Must enter expiration date";
+               document.getElementById("exp_date").focus();
+               return false;
+            } else {
+               document.getElementById("error").innerHTML = "Order has been received"
+               return true;
+            }
+         }
+
+         function checkerror01() {
+            var regex = /\d\d\d-\d\d\d-\d\d\d\d/;
+            var result = document.getElementById("phnumber").value;
+            if (!regex.test(result)) {
+               document.getElementById("error01").style.display = "inline";
+               return false;
+            } else {
+               document.getElementById("error01").style.display = "none";
+               return true;
+            }
+         }
+         function checkerror02() {
+            var regex = /\d\d\d\d\s\d\d\d\d\s\d\d\d\d\s\d\d\d\d/;
+            var result = document.getElementById("credit_card").value;
+            if (!regex.test(result)) {
+               document.getElementById("error02").style.display = "inline";
+               return false;
+            } else {
+               document.getElementById("error02").style.display = "none";
+               return true;
+            }
+         }
+         function checkerror03() {
+            var regex = /\d\d\/\d\d\d\d/;
+            var result = document.getElementById("exp_date").value;
+            if (!regex.test(result)) {
+               document.getElementById("error03").style.display = "inline";
+               return false;
+            } else {
+               document.getElementById("error03").style.display = "none";
+               return true;
+            }
+         }
+         function myTotal() {
+            document.getElementById("total").value = "0";
+            var total = 0;
+            if (document.getElementById("item_0").checked) {
+                total += 2.99;
+            }
+            if (document.getElementById("item_1").checked) {
+                total += 1.99;
+            }
+            if (document.getElementById("item_2").checked) {
+                total += 5.99;
+            }
+            if (document.getElementById("item_3").checked) {
+                total += 7.99;
+            }
+            document.getElementById("total").value = total;
+        }
+
+      </script>
+   </body>
+</html>
