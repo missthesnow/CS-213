@@ -80,9 +80,6 @@ form {
 form label {
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;}
-form label:nth-of-type(4) {
-    color: #7289DA;
-    font-weight: bold;}
 form input {
     margin-bottom: 10px;
     border: 1px solid #f0f0f0;
