@@ -1,1 +1,98 @@
-This will be assignment #12
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mileage Calculator</title>
+      <link rel="stylesheet" href="assign12style.css">
+   </head>
+   <body>
+    <header>
+        <h2>Mileage Calculator</h2>
+        <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+    </header>
+      <div>
+         <form id="myForm">
+            <label for="startCity">Start City:</label>
+            <input type="text" id="startCity" name="startCity" placeholder="Starting City"/>
+
+            <br><label for="startState">Start State:</label>
+            <input type="text" id="startState" name="startState" placeholder="Starting State"/>
+
+            <br><label for="endCity">Destination City:</label>
+            <input type="text" id="endCity" name="endCity" placeholder="Destination City"/>
+
+            <br><label for="phnumber">Destination State:</label>
+            <input type="text" id="endState" name="endState" placeholder="Destination State"/>
+            <p id="error" style="color: red;"></p>
+            <input type="button" value="Submit" onclick="check()">
+         </form>
+      </div>
+      <br><br>
+      <table id="display"></table><br><br>
+
+      <script>
+         function makeRequest() {
+            var strCity = document.getElementById("startCity").value;
+            var strState = document.getElementById("startState").value;
+            var ndCity = document.getElementById("endCity").value;
+            var ndState = document.getElementById("endState").value;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               var myObj = JSON.parse(this.responseText);
+               formatJson(myObj);
+            }
+            };
+            var request = "?startCity=" + strCity + "&startState=" + strState + "&endCity=" + ndCity + "&endState=" + ndState;
+            xmlhttp.open("POST", "/cgi-bin/cs213/mileageAjaxJSON" + request, true);
+            xmlhttp.send();
+         }
+         function formatJson(myObj) {
+            var i;
+            var table="<tr><th>Origin City</th><th>Origin State</th><th>Destination City</th><th>Destination State</th><th>Miles</th><th>Travel Methods</th></tr>";
+            table += "<tr><td>" + myObj.trip.startcity + "</td><td>" + myObj.trip.startstate + "</td><td>" +
+               myObj.trip.endcity + "</td><td>" + myObj.trip.endstate + "</td><td>" + myObj.trip.miles +"</td>";
+            if (myObj.trip.miles == "Unknown") {
+               table += "<td>Unknown</td></tr>";
+            } else {
+               for (var i = 0; i < myObj.trip.tmode.length; i++) {
+                  table += "<td>" + myObj.trip.tmode[i] + "</td></tr>" +
+                  "<tr><td></td><td></td><td></td><td></td><td></td>"
+               }
+            }
+            document.getElementById("display").innerHTML = table;
+         }
+
+         function check(){
+            document.getElementById("error").innerHTML = ""
+            var startCity = document.getElementById("startCity").value;
+            var startState = document.getElementById("startState").value;
+            var endCity = document.getElementById("endCity").value;
+            var endState = document.getElementById("endState").value;
+            var regex = /\b[A-Z][A-Z]\b/;
+            if (startCity == "") {
+               document.getElementById("error").innerHTML = "Must Specify Starting City";
+               document.getElementById("startCity").focus();
+               return;
+            } else if (startState == "" || !regex.test(startState)) {
+               document.getElementById("error").innerHTML = "Must Specify Starting State (i.e. CA)";
+               document.getElementById("startState").focus();
+               return;
+            } else if (endCity == "") {
+               document.getElementById("error").innerHTML = "Must Specify Destination City";
+               document.getElementById("endCity").focus();
+               return;
+            } else if (endState == "" || !regex.test(endState)) {
+               document.getElementById("error").innerHTML = "Must Specify Destination State (i.e. CA)";
+               document.getElementById("endState").focus();
+               return;
+            } else {
+               makeRequest();
+            }
+         }
+      </script>
+   </body>
+</html>
