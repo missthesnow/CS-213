@@ -1,1 +1,87 @@
-This will be assignment #13
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Register Piano Students</title>
+      <link rel="stylesheet" href="week13style.css">
+      <style>
+
+      </style>
+   </head>
+   <body onload="makeRequest()">
+    <header>
+        <h2 style="color: #FFFFFF; text-align: center;">Form and Saving Data</h2>
+        <nav>
+            <ul><a href="../index.html">← CS 213 Assignments</a></ul>
+        </nav>
+    </header>
+      <div>
+         <form id="registration">
+            <h1>Piano Festival Competition Registration:</h1>
+            <div id="performance_type">
+               <h2>Performance Type:</h2>
+               <input type="radio" id="solo" name="performance" value="Solo" onclick="isDuet()"/>
+               <label for="solo">Solo</label><br>
+               <input type="radio" id="duet" name="performance" value="Duet" onclick="isDuet()"/>
+               <label for="duet">Duet</label><br>
+               <input type="radio" id="concerto" name="performance" value="Concerto" onclick="isDuet()"/>
+               <label for="concerto">Concerto</label>
+            </div>
+            <div id="solo_info">
+               <h2>Performer Information:</h2>
+               <label for="first_name">First Name</label><br>
+               <input type="text" id="first_name" name="first_name" placeholder="First Name"/><br>
+               <label for="last_name">Last Name</label><br>
+               <input type="text" id="last_name" name="last_name" placeholder="Last Name"/><br>
+               <label for="student_id">Student ID</label><br>
+               <input type="text" id="student_id" name="student_id" placeholder="Student ID"/>
+            </div><br>
+            <div id="duet_info" style="display: none;">
+               <h2>Duet Partner's Information:</h2>
+               <label for="first_name_2">Partner's First Name</label><br>
+               <input type="text" id="first_name_2" name="first_name_2" placeholder="First Name"/><br>
+               <label for="last_name_2">Partner's Last Name</label><br>
+               <input type="text" id="last_name_2" name="last_name_2" placeholder="Last Name"/><br>
+               <label for="student_id_2">Partner's Student ID</label><br>
+               <input type="text" id="student_id_2" name="student_id_2" placeholder="Student ID"/>
+               <br><br>
+            </div>
+            <div>
+               <h2>Performance Information:</h2>
+               <label for="skill_level">Skill Level</label><br>
+               <select id="skill_level" name="skill_level">
+                  <option value="noValue">-- Select Skill Level --</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="pre_advanced">Pre-Advanced</option>
+                  <option value="advanced">Advanced</option>
+               </select><br>
+               <label for="instrument">Instrument</label><br>
+               <select id="instrument" name="instrument">
+                  <option value="noValue">-- Select Instrument --</option>
+                  <option value="piano">Piano</option>
+                  <option value="voice">Voice</option>
+                  <option value="string">String</option>
+                  <option value="organ">Organ</option>
+                  <option value="other">Other</option>
+               </select><br>
+               <label for="location">Performance Bulding Location</label><br>
+               <input type="text" id="location" name="location" placeholder="Building Location"/><br>
+               <label for="room">Performance Room Number</label><br>
+               <input type="text" id="room" name="room" placeholder="Room Number"/><br>
+               <label for="time">Performance Time</label><br>
+               <input type="text" id="time" name="time" placeholder="Performance Time"/><br>
+            </div>
+            <input type="submit" name="register" value="Register" onclick="return check()">
+            <input type="reset" name="clear" value="Clear" onclick="resetForm()">
+            <h2 id="error" style="color: #da7272;"></h2><br><br>
+         </form>
+      </div>
+      <div>
+         <p id="response"></p>
+      </div><br><br>
+      <script src="week13.js">
+      </script>
+   </body>
+</html>
